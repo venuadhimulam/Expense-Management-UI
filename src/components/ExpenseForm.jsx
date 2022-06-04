@@ -85,7 +85,7 @@ class ExpenseForm extends Component {
   }
 
   componentDidMount() {
-    if (this.props.expenseData) {
+    if (this.props && this.props.expenseData) {
       const data = this.props.expenseData;
       this.setState({
         name: data.name,
@@ -116,7 +116,7 @@ class ExpenseForm extends Component {
         description: "",
       });
     }
-    this.props.update();
+    this.props && this.props.update();
   };
 
   notify = (message, Error) => {
@@ -151,6 +151,25 @@ class ExpenseForm extends Component {
     return flag;
   };
 
+  throwValidations = (resData) => {
+    var messages =
+      resData &&
+      resData.response &&
+      resData.response.data &&
+      resData.response.data.errors;
+    if (messages) {
+      if (messages.name && messages.name.length > 0) {
+        this.notify(messages.name[0], true);
+      }
+      if (messages.price && messages.price.length > 0) {
+        this.notify(messages.price[0], true);
+      }
+      if (messages.description && messages.description.length > 0) {
+        this.notify(messages.description[0], true);
+      }
+    }
+  };
+
   updateExpense = async (name, price, description) => {
     const { expenseData } = this.props;
 
@@ -164,11 +183,12 @@ class ExpenseForm extends Component {
 
     const resData = await Service.updateExpenseMethod(url, payload);
 
-    if (resData && resData.status == 200) {
+    if (resData && resData.status === 200) {
       this.notify("Updated Succesfully!");
       this.resetValues(false);
     } else {
       this.notify("Updated Failed!", true);
+      this.throwValidations(resData);
     }
   };
 
@@ -182,15 +202,17 @@ class ExpenseForm extends Component {
 
     const resData = await Service.saveExpense(url, payload);
 
-    if (resData && resData.status == 200) {
+    if (resData && resData.status === 200) {
       this.notify("Saved Succesfully!");
       this.resetValues(true);
     } else {
       this.notify("Saved Failed!", true);
+      this.throwValidations(resData);
     }
   };
 
   submit = () => {
+    toast.dismiss();
     const { name, price, description } = this.state;
     const { type } = this.props;
 
@@ -249,7 +271,7 @@ class ExpenseForm extends Component {
               required
             />
           </Right>
-          {this.props.type && this.props.type === "update" ? (
+          {this.props && this.props.type && this.props.type === "update" ? (
             <Button onClick={() => this.submit()}>Update</Button>
           ) : (
             <Button onClick={() => this.submit()}>Add</Button>

@@ -16,14 +16,6 @@ class EditExpenses extends Component {
       color: white;
     `;
 
-    const CloseBtn = styled.button`
-      background: white !important;
-      padding: 10px;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-    `;
-
     return (
       <div
         className="modal fade"
@@ -42,14 +34,6 @@ class EditExpenses extends Component {
               >
                 Edit Expense
               </h5>
-              {/* <CloseBtn
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              >
-                <strong>X</strong>
-              </CloseBtn> */}
             </ModelHeader>
             <div className="modal-body">
               <ExpenseForm type="update" expenseData={this.props.expenseData} />

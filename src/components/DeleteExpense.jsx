@@ -9,14 +9,6 @@ class DeleteExpense extends Component {
       color: white;
     `;
 
-    const CloseBtn = styled.button`
-      background: white !important;
-      padding: 10px;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-    `;
-
     const deleteExpenseRecord = async (id) => {
       await axios
         .delete("http://127.0.0.1:8000/deleteExpense/" + id)
@@ -43,14 +35,6 @@ class DeleteExpense extends Component {
               <h5 className="modal-title" id="exampleModalLabel">
                 Delete Expense
               </h5>
-              {/* <CloseBtn
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              >
-                <strong>X</strong>
-              </CloseBtn> */}
             </ModelHeader>
             <div className="modal-body">Are you sure wants to delete?</div>
             <div className="modal-footer">

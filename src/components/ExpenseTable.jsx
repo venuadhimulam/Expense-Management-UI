@@ -5,6 +5,7 @@ import DeleteExpense from "./DeleteExpense";
 import { EditOutlined, DeleteOutlineOutlined } from "@material-ui/icons";
 import { mobile, tab } from "../responsive";
 import Service from "./Service";
+import { toast } from "react-toastify";
 
 const Container = styled.div`
   display: flex;
@@ -65,6 +66,7 @@ class ExpenseTable extends Component {
   };
 
   getExpense = async (id) => {
+    toast.dismiss();
     let url = "http://127.0.0.1:8000/show/";
     const resData = await Service.getExpenseById(url, id);
     if (resData != null) {
