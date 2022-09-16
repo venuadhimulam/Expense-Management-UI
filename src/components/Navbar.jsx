@@ -74,24 +74,6 @@ const Navbar = () => {
                 <TitleDiv>drughelp.care!</TitleDiv>
               </Logo>
             </Link>
-            {/* <NavbarDiv className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <Link
-                    className="nav-link active text-white"
-                    aria-current="page"
-                    to="/"
-                  >
-                    Add Expense
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link text-white" to="/getExpenses">
-                    Fetch Expenses
-                  </Link>
-                </li>
-              </ul>
-            </NavbarDiv> */}
             <SocialContainer>
               <SocialIcon href="https://www.facebook.com/Drughelp.careApp/">
                 <Facebook />
@@ -113,7 +95,6 @@ const Navbar = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/getExpenses" component={ExpenseTable} />
-          {/* <Route exact path="/fetchExpenses" component={ExpenseTable} /> */}
           <Redirect from="*" to="/" />
         </Switch>
       </div>

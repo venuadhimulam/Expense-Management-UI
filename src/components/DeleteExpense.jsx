@@ -13,7 +13,6 @@ class DeleteExpense extends Component {
       await axios
         .delete("http://127.0.0.1:8000/deleteExpense/" + id)
         .then(() => {
-          console.log("delete press", this.props);
           this.props.fetch();
         })
         .catch((error) => {

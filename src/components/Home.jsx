@@ -74,23 +74,6 @@ class Home extends Component {
     const { flag } = this.state;
     return (
       <div>
-        {/* <div class="alert alert-success d-flex align-items-center" role="alert">
-          <svg
-            class="bi flex-shrink-0 me-2"
-            width="24"
-            height="24"
-            role="img"
-            aria-label="Success:"
-          ></svg>
-          <div>An example success alert with an icon</div>
-          <button
-            type="button"
-            class="btn-close right"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-          ></button>
-        </div> */}
-
         <Container>
           <AddExpenses>
             <TitleDiv>
@@ -108,7 +91,7 @@ class Home extends Component {
               </div>
               <Tilte>List of Expenses</Tilte>
             </TitleDiv>
-            <ExpenseTable update={this.callBack} updateFlag={flag} />
+            <ExpenseTable update={this.callBack} />
           </ListOfExpenses>
         </Container>
       </div>
